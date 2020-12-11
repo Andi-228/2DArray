@@ -9,7 +9,7 @@ void printMatrix(int** matrix, int n, int m);
 void fillMatrix(int** matrix, int n, int m);
 void deleteMatrix(int** matrix, int n, int m);
 void changeRowColoumn(int** matrix, int n, int m, int k); //Task 11
-
+int getRowNumWhithMaxAvg(int** matrix, int n, int m);
 
 int main() {
 	srand(time(NULL));
@@ -23,6 +23,16 @@ int main() {
 	printMatrix(matrix1, size1, size1);
 	deleteMatrix(matrix1, size1, size1);
 
+	
+
+	//task 10 -
+	int size2 = 6;
+	int** matrix2 = forMatrix (size2, size2);
+	fillMatrix(matrix2, size2, size2);
+	cout << "Matrix: " << endl;
+	printMatrix(matrix2, size2, size2);
+	int index1 = getRowNumWhithMaxAvg(matrix2, size2, size2);
+	cout << "Row index with max average: " << index1 + 1 << endl;
 	system("pause");
 	return 0;
 }
@@ -75,4 +85,24 @@ void changeRowColoumn(int** matrix, int n, int m, int k)
 	int tmp = matrix[k][i];
 	matrix[k][i] = matrix[i][k];
 	matrix[i][k] = tmp;*/
+}
+
+int getRowNumWhithMaxAvg(int** matrix, int n, int m)
+{
+	int rowIndex = 1;
+	double max = -9999;
+
+	for (int i = 0; i < n; i++) {
+		int sum = 0;
+		for (int j = 0; j < m; j++) {
+			sum += matrix[i][j];
+		}
+		double avg = sum / m; // max = avg
+		if (avg > max) {
+			max = avg;
+			rowIndex = i;
+		}
+	}
+
+	return rowIndex;
 }
