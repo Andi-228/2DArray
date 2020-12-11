@@ -10,6 +10,7 @@ void fillMatrix(int** matrix, int n, int m);
 void deleteMatrix(int** matrix, int n, int m);
 void changeRowColoumn(int** matrix, int n, int m, int k); //Task 11
 int getRowNumWhithMaxAvg(int** matrix, int n, int m);
+void fillNull(int** matrix, int n, int m);
 
 int main() {
 	srand(time(NULL));
@@ -33,6 +34,19 @@ int main() {
 	printMatrix(matrix2, size2, size2);
 	int index1 = getRowNumWhithMaxAvg(matrix2, size2, size2);
 	cout << "Row index with max average: " << index1 + 1 << endl;
+
+	//img task
+
+	int size3 = 6;
+	int** matrix3 = forMatrix(size3, size3);
+	fillMatrix(matrix2, size2, size2);
+	cout << "Matrix: " << endl;
+	printMatrix(matrix3,size3, size3);
+	int index1 = getRowNumWhithMaxAvg(matrix3, size3, size3);
+	cout << "Fill with nulls" << endl;
+	fillNull(matrix3, size3, size3)
+    printMatrix(matrix3, size3, size3);
+
 	system("pause");
 	return 0;
 }
@@ -105,4 +119,16 @@ int getRowNumWhithMaxAvg(int** matrix, int n, int m)
 	}
 
 	return rowIndex;
+}
+
+void fillNull(int** matrix, int n, int m)
+{
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; i++) {
+			if (i <= n /2 && (j >= i && j <= n - i)) {
+				matrix[i][j] = 0;
+
+			}
+		}
+	}
 }
