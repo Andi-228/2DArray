@@ -39,12 +39,12 @@ int main() {
 
 	int size3 = 6;
 	int** matrix3 = forMatrix(size3, size3);
-	fillMatrix(matrix2, size2, size2);
+	fillMatrix(matrix3, size3, size3);
 	cout << "Matrix: " << endl;
 	printMatrix(matrix3,size3, size3);
-	int index1 = getRowNumWhithMaxAvg(matrix3, size3, size3);
+	int index2 = getRowNumWhithMaxAvg(matrix3, size3, size3);
 	cout << "Fill with nulls" << endl;
-	fillNull(matrix3, size3, size3)
+	fillNull(matrix3, size3, size3);
     printMatrix(matrix3, size3, size3);
 
 	system("pause");
@@ -124,11 +124,18 @@ int getRowNumWhithMaxAvg(int** matrix, int n, int m)
 void fillNull(int** matrix, int n, int m)
 {
 	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < m; i++) {
-			if (i <= n /2 && (j >= i && j <= n - i)) {
+		for (int j = 0; j < m; j++) {
+			/*if (i <= n /2 && (j >= i && (j <= n - 1 - i)) {
+			else if ( i >= n / 2 && (j >= n - 1 - i && j <=i ))
 				matrix[i][j] = 0;
 
+			}*/
+			if (j <= n / 2 && (j <= i && j <= n - 1 - i)) {
+				matrix[i][j] = 0;
 			}
+			
+			//else if ( i >= n / 2 && (j >= n - 1 - i && j <=i ))
+				//matrix[i][j] = 0;
 		}
 	}
 }
